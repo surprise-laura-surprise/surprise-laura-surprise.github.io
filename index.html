@@ -52,6 +52,14 @@
                 stroke-dashoffset: -14;
             }
         }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 1001;
+        }
     </style>
 </head>
 <body>
@@ -60,5 +68,70 @@
             Všetko najlepšie, Laura
         </text>
     </svg>
+
+    <script>
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#ff8c42', '#95e1d3', '#f38181', '#aa96da'];
+            const confettiCount = 400;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.backgroundColor = color;
+                    
+                    const startX = window.innerWidth / 2 + (Math.random() - 0.5) * 200;
+                    const startY = window.innerHeight / 2;
+                    
+                    confetti.style.left = startX + 'px';
+                    confetti.style.top = startY + 'px';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    const angle = Math.random() * Math.PI * 2;
+                    const velocity = 5 + Math.random() * 10;
+                    let vx = Math.cos(angle) * velocity;
+                    let vy = Math.sin(angle) * velocity - 5;
+                    
+                    const gravity = 0.2;
+                    const rotation = Math.random() * 360;
+                    const rotationSpeed = (Math.random() - 0.5) * 50;
+                    
+                    let x = startX;
+                    let y = startY;
+                    let currentRotation = rotation;
+                    let life = 5000;
+                    const startTime = Date.now();
+                    
+                    function animateConfetti() {
+                        const elapsed = Date.now() - startTime;
+                        
+                        if (elapsed > life || y > window.innerHeight + 50) {
+                            confetti.remove();
+                            return;
+                        }
+                        
+                        vy += gravity;
+                        x += vx;
+                        y += vy;
+                        currentRotation += rotationSpeed;
+                        
+                        confetti.style.left = x + 'px';
+                        confetti.style.top = y + 'px';
+                        confetti.style.transform = `rotate(${currentRotation}deg)`;
+                        
+                        requestAnimationFrame(animateConfetti);
+                    }
+                    
+                    animateConfetti();
+                }, i);
+            }
+        }
+        
+        // Confetti after 2 seconds
+        setInterval(createConfetti, 2000);
+    </script>
 </body>
 </html>
