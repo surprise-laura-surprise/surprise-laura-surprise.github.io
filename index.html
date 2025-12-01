@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Všetko najlepšie, Laura!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .message {
+            font-size: 4rem;
+            font-weight: bold;
+            color: transparent;
+            -webkit-text-stroke: 3px white;
+            text-stroke: 3px white;
+            stroke-dasharray: 20 10;
+            stroke-dashoffset: 0;
+            animation: dashMove 2s linear infinite;
+            text-align: center;
+            padding: 20px;
+        }
+
+        svg {
+            width: 100%;
+            height: 300px;
+        }
+
+        text {
+            stroke: white;
+            stroke-width: 3;
+            fill: transparent;
+            stroke-dasharray: 8 6;
+            stroke-dashoffset: 0;
+            animation: dashMove 2s linear infinite;
+            font-size: 120px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        @keyframes dashMove {
+            to {
+                stroke-dashoffset: -14;
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg viewBox="0 0 1000 200">
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">
+            Všetko najlepšie, Laura
+        </text>
+    </svg>
+</body>
+</html>
