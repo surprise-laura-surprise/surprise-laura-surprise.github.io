@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Všetko najlepšie, Laura!</title>
-    <style>
+    <style>	
         body {
             margin: 0;
             padding: 0;
@@ -32,7 +32,8 @@
 
         svg {
             width: 100%;
-            height: 300px;
+            height: 900px;
+			word-break: break-all;
         }
 
         text {
@@ -63,11 +64,14 @@
     </style>
 </head>
 <body>
-    <svg viewBox="0 0 1000 200">
-        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">
-            Všetko najlepšie, Laura
-        </text>
-    </svg>
+	<div class="holder">
+		<svg viewBox="0 0 1000 200" class="mobile-version">
+			<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">
+				<tspan x="53%" y="50%">Všetko najlepšie,</tspan>
+				<tspan x="50%" dy="55%">Laura!</tspan>
+			</text>
+		</svg>
+	</div>
 
     <script>
         function createConfetti() {
